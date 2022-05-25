@@ -1,0 +1,60 @@
+.box{
+box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
+}
+
+.header{
+    padding: 0.5rem 1rem;
+    margin-bottom: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+::ng-deep .mat-tab-body-content {
+    padding: 1rem;
+}
+
+::ng-deep td :hover{
+    cursor: pointer;
+}
+
+
+h3{
+    display: flex;
+}
+p{
+    word-wrap: break-word;
+}
+
+::ng-deep  h3 :hover {
+    color: #001871;
+}
+
+.descripcion{
+    max-width: 232px;
+    font-size: 13px;
+    justify-content: center;
+}
+
+.h2-content{
+    text-align: center;
+    padding-top: 1.5rem;
+}
+
+.grid-content{
+    display: grid;
+    align-items: center;
+    padding-top: 1rem;
+    justify-items: center;
+    grid-template-columns:repeat(auto-fit, minmax(200px, 2fr));
+    grid-gap: 3px;
+    text-align: start;  
+    justify-content: center;
+    align-content: center;
+}
+/* .grid-content-info-column{
+    grid-column: 1;
+    
+}
+
+.grid-content-info-column-next{
+    grid-column: 2;
+} */

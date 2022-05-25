@@ -1,0 +1,54 @@
+<mat-tab-group   [selectedIndex]="label">
+    <mat-tab>
+      <ng-template mat-tab-label (click)="tabs(1)">
+        <span class="inf" (click)="tabs(1)">{{labelGroup}}</span>
+      </ng-template>
+     <div (click)="tabs(1)" class="row">
+      
+      <div class="col-md-6 padding">
+        <mat-card class="card">
+        <mat-card-title class="area">{{area}}</mat-card-title>
+          <div>
+            <div>
+              <div>
+                <div style="display: block"  id="div1">
+                  <canvas  baseChart  [data]="barChartData"
+                  [options]="barChartOptions"
+                  (click)="chartClicked(1)"
+                  [plugins]="barChartPlugins"
+                  [type]="barChartType" id="2" ></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-card>
+          </div>
+      <div  class="col-md-6 padding">
+        <mat-card class="card">
+        <mat-card-title  >Información general</mat-card-title>
+          <div>
+            <div>
+              <div>
+                <div style="display: block">
+                  <canvas  baseChart (click)="chartClicked(2)" [data]="barChartGlobal" [options]="barChartOptions"
+                    [type]="barChartType" (chartClick)="chartClicked($event)" ></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-card>
+      </div>
+
+            <div class="col-md-12 align-items-center ">
+          <app-table></app-table>
+          </div>
+          </div>
+    </mat-tab>
+    <mat-tab>
+      <ng-template mat-tab-label (click)="tabs(2)" >
+        <span class="inf" (click)="tabs(2)">Registrar Curso</span>
+      </ng-template>
+      <app-form (click)="tabs(2)"></app-form>
+    </mat-tab>
+  </mat-tab-group>
+

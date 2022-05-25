@@ -1,0 +1,86 @@
+<div style="padding:1rem;" *ngIf="data.info == 1">
+    <h3><b>Ruta</b></h3>
+    <p>
+        Por favor indique dentro de la plataforma Campus Russell cuál será la ubicación que tendrá el curso, seleccione de la lista desplegable.
+    </p>
+    <h3><b>Tema</b></h3>
+    <p>
+        Corresponde al nombre de la tematica, es decir, el nombre del tema que va a desarrollarEn caso de no estar en la lista desplegable, seleccione "Registrar nuevo Tema" para agregarlo 
+    </p>
+    <h3><b>Modulo</b></h3>
+    <p>
+        Corresponde al nombre Modulo, es decir, el nivel más alto de la temática que va a desarrollar. En caso de no estar en la lista desplegable, seleccione "Registrar nuevo Modulo" para agregarlo
+    </p>
+</div>
+<div style="padding:1rem;" *ngIf="data.info == 2">
+    <h3><b>Curso</b></h3>
+    <p>
+        Incluir el nombre curso, será el nombre que deberá aparecer en el certificado una vez haya cursado y aprobado todos los contenidos temáticos.
+    </p>
+    <h3><b>Calificación</b></h3>
+    <p>
+        De acuerdo a su criterio, establezca el nivel de importancia que debe tener cada uno de los contenidos relacionados anteriormente. Escoja una de las 3 opciones de la lista desplegable.
+    </p>
+    <h3><b>Areas Obligatorias - Areas Opcionales - Cargos Obligatorios - Cargos Opcionales</b></h3>
+    <p>
+        Cada uno de los contenidos fue creado con el fin de capacitar a los colaboradores en su labor y para quienes debe ser obligatorio la toma del mismo; sin embargo, este mismo contenido puede ser complementario pues las temáticas pueden aplicar a diferentes cargos y áreas a modo de conocimiento opcional. Indique en los campos a continuación cuál es el público obligatorio con su respectivo cargo y cuál es el público opcional.
+    </p>
+    <h3><b>Tiempo Evaluación</b></h3>
+    <p>
+        Indique el tiempo máximo que tendrá la evaluación para ser resuelta por el usuario. Este valor debe estar en minutos.
+    </p>
+    <h3><b>Número de Preguntas</b></h3>
+    <p>
+        Indique cuántas preguntas se van a visualizar al momento de presentar la evaluación. Ejemplo: Si el banco de preguntas del cuestionario tiene 20, al momento de presentar la evaluación se visualizarán 10.
+    </p>
+    <h3><b>Ciudades</b></h3>
+    <p>
+        Indique para qué ciudades estará disponible el contenido dentro de la plataforma de Campus Russell. Puede seleccionar una o varias.
+    </p>
+    <h3><b>Horas Certificadas</b></h3>
+    <p>
+        Incluya el número de horas que aparecerán en el certificado del contenido. Si el contenido es parte de una única evaluación por favor incluya el valor 0.
+    </p>
+    <h3><b>Descripción del contenido</b></h3>
+    <p>
+        Incluya una descripción del tema tratado dentro del contenido
+    </p>
+    <h3><b>Observaciones</b></h3>
+    <p>
+        indique si tiene alguna observación adicional con relación al contenido del presente formulario o del curso como tal. Algún criterio específico que deba ser tenido en cuenta para el cargue de la información en la plataforma de Campus Russell. Si no hay ninguna, por favor indique: Ninguna o N/A
+    </p>
+
+</div>
+
+
+<div style="padding:1rem;" *ngIf="data.info == 3">
+    <h3><b>Nombre - Apellidos</b></h3>
+    <p>
+        Ingrese nombres y apellidos completos de la persona que creo el curso.
+    </p>
+    <h3><b>Correo</b></h3>
+    <p>
+        Ingrese el correo de la persona que creo el curso.
+    </p>
+
+    <h3><b>Link de archivos</b></h3>
+    <p>Acá debe cargar los documentos anexos a OneDrive y compartir el enlace: </p>
+    <ul>
+        <li>Cuestionario final del curso </li>
+        <li>Evaluación (Deben ser preguntas cerradas y debe señalar las respuestas correctas a cada una de las preguntas).</li>
+        <li>Cuestionario de preguntas y respuestas correctas (Únicamente, si dentro del aplicativo o el contenido usted creó un quiz intercurso, debe adjuntar el documento con las preguntas y las respuestas correctas con el fin de comprobar la funcionalidad y el marcado de completado de los contenidos en la plataforma) Recuerde que estos quizzes intercursos son opcionales. </li>
+        <li>El link de OneDrive que incluya el archivo que genera el curso al ser exportado en el formato SCORM 1.2, si quieres utilizar esta opción, la puedes seleccionar en la lista desplegable</li>
+    </ul>
+       
+    
+    
+    <h3><b>Archivos Comprimidos</b></h3>
+    <p>Acá debe cargar los documentos anexos comprimidos en formato RAR:</p>
+    <ul>
+        <li>Cuestionario final del curso </li>
+        <li>Evaluación (Deben ser preguntas cerradas y debe señalar las respuestas correctas a cada una de las preguntas).</li>
+        <li>Cuestionario de preguntas y respuestas correctas (Únicamente, si dentro del aplicativo o el contenido usted creó un quiz intercurso, debe adjuntar el documento con las preguntas y las respuestas correctas con el fin de comprobar la funcionalidad y el marcado de completado de los contenidos en la plataforma) Recuerde que estos quizzes intercursos son opcionales. </li>
+        <li>Documento en donde se visualice el archivo .rar que genera el curso al ser exportado en el formato SCORM 1.2, si quieres utilizar esta opción, la puedes seleccionar en la lista desplegable</li>
+    </ul>
+
+</div>

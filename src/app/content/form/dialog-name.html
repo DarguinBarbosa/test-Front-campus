@@ -1,0 +1,15 @@
+<h1 mat-dialog-title>Registra un nuevo {{data.name}}</h1>
+<div mat-dialog-content>
+  <p>Ingresa aquí el nuevo {{data.name}}</p>
+  <form [formGroup]="form2">
+  <mat-form-field style="width: 100%;" appearance="fill">
+    <mat-label>Escribe aqui el nombre del {{data.name}}</mat-label>
+    <input matInput [(ngModel)]="data.nameR" formControlName="input" required>
+    <mat-error>{{getError()}}</mat-error>
+  </mat-form-field>
+</form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+  <button mat-button [disabled]="form2.invalid" [mat-dialog-close]="data" cdkFocusInitial>Guardar</button>
+</div>

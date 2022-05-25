@@ -1,0 +1,10 @@
+<div class="card box">
+    <div class="header">
+    <h4>Información de los cursos registrados</h4>
+    <div class="card-body">
+      <div>
+        <ng2-smart-table class="table-responsive-md" (userRowSelect)="allFilters($event.data)" [settings]="settings" [source]="data"></ng2-smart-table>
+    </div>
+  </div>
+</div>
+</div>

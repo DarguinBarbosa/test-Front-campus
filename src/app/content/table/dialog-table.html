@@ -1,0 +1,29 @@
+  <mat-dialog-content class="mat-typography">
+    <h2 class="h2-content" *ngIf="!data?.ingreso" mat-dialog-title>{{data.course.nombre_curso}}</h2>
+    <h2 class="h2-content" mat-dialog-title>{{data?.ingreso}}</h2>
+    <div class="grid-content">
+      <div class="grid-content-info-column">
+        <h5> <b>Curso</b> - {{data.course.nombre_curso}}</h5>
+        <h5><b>MODULO</b> - {{data.module.descripcion_m}}</h5>
+        <h5><b>AREAS OPCIONALES</b> - {{data.course.areas_OP}}</h5>
+        <h5><b>CARGO OPCIONALES</b> - {{data.course.cargo_OP}}</h5>
+        <h5><b>N° PREGRUNTAS</b> - {{data.course.C_P_evalucion}} </h5>
+        <h5><b>HORAS CERTIFICADAS</b> - {{data.course.HCertificado}}</h5>
+        <h5><b>CALIFICACION</b> - {{data.course.calificacion}}</h5>
+
+        <h5><b>Observaciones</b> -</h5><p>{{data.course.observaciones}}</p>
+
+      </div>
+      <div class="grid-content-info-column-next">
+        <h5> <b>AREA</b> - {{data.route.nombre_ruta}}</h5>
+        <h5><b>TEMA</b> - {{data.tema.nombre_tema}}</h5>
+        <h5><b>CIUDAD</b> - {{data.course.Ciudad}}</h5>
+        <h5><b>AREAS OBLIGATORIA</b> - {{data.course.areas_BP}}</h5>
+        <h5><b>CARGO OBLIGATORIO</b>  - {{data.course.cargo_BP}}</h5>
+        <h5><b>TIEMPO EVALUACION</b> - {{data.course.T_M_Evaluacion}} Minutos</h5>
+        <h5><b>CREADOR</b> - {{data.course.nombre}} {{data.course.apellidos}}</h5>
+        <h5></h5>
+        <h5><b>Descripcion del Curso - </b></h5><p>{{data.course.descripcion_contenido}}</p>
+      </div>
+    </div>
+  </mat-dialog-content>

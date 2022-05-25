@@ -1,0 +1,40 @@
+.card{
+    height:auto;
+    width: auto;
+    /* max-height: auto; */
+}
+mat-card-title{
+    font-size: 17px;
+}
+.cardH{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.padding{
+    padding-bottom: 3rem;
+}
+
+span{
+    padding: 15px 7px 15px 7px;
+}
+.inf{
+    width: 209px;
+}
+::ng-deep .mat-tab-label{
+    padding: 0 !important;
+}
+
+@media only screen and (max-width: 767px) {
+    .card {
+        height: auto;
+        width: auto;
+    }
+    .padding{
+    padding-bottom: 1rem;
+    }
+    ::ng-deep .row > * {
+        padding-bottom: 1rem;
+    }
+  }
+  

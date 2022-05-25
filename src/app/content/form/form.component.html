@@ -1,0 +1,269 @@
+<app-spiner></app-spiner>
+<mat-stepper class="example-stepper" [orientation]="(stepperOrientation | async)!" linear >
+  <mat-step label="Ruta" [stepControl]="firstForm"  [editable]="isEditable">
+    <div class="d-flex align-items-center auth px-0">
+        <div class="row w-100 mx-0">
+          <div class="col-lg-6 mx-auto">
+            <div class="auth-form-light text-left py-0 px-4 px-sm-5">
+              <h4 style="padding: 1rem; cursor: pointer;" (click)="openBottomSheet(1)" class="font-weight-light ">Registra la ruta para tener acceso a la información del curso. <span class="spacer"></span>
+                <mat-icon class="icon-spacer">info</mat-icon>
+              </h4>
+              
+              <form [formGroup]="firstForm" class="row g-3" >
+                <div class="col-md-12 form-group">
+                    <p>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Area</mat-label>
+                            <mat-select matInput formControlName="area" title="Selecciona una opción" required>
+                              <mat-option *ngFor="let item of routeD" (click)="searchT(item);" value="{{item.id_ruta}}">{{item.nombre_ruta}}</mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                      </p>
+                </div>  
+                <div class="col-md-12 form-group">
+                    <p>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Tema</mat-label>
+                            <mat-select matInput formControlName="tema" (ngModel)="change($event)" required title="Selecciona una opción">
+                              <mat-option *ngFor="let item of storageT" (click)="searchT(item)" value="{{item.id_tema}}">{{item.nombre_tema}}</mat-option>
+                              <mat-option  value="otro" (click)="openDialog('Tema');searchT('1')">{{otherTopic}}</mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                      </p>
+                </div>  
+                <div class="col-md-12 form-group">
+                  <p>
+                      <mat-form-field appearance="outline">
+                          <mat-label>Modulo</mat-label>
+                          <mat-select matInput formControlName="modulo"title="Selecciona una opción" required>
+                            <mat-option *ngFor="let item of storageM" value="{{item.id_modulo}}">{{item.descripcion_m}}</mat-option>
+                            <mat-option  value="otro" (click)="openDialog('Modulo')">{{otherModule}}</mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                    </p>
+              </div>  
+                <div class="col-md-12  form-group">
+                  <button color="primary" [disabled]="firstForm.invalid"  mat-raised-button matStepperNext >Siguiente</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup" label="Curso" [editable]="isEditable">
+    <div class="d-flex align-items-center auth px-0">
+        <div class="row w-100 mx-0">
+          <div class="col-lg-12 mx-auto">
+            <div class="auth-form-light text-left py-0 px-4 px-sm-5">
+              <h4 style="padding: 1rem;" class="font-weight-light "  (click)="openBottomSheet(2)">LLena los siguientes campos para poder registrar tu curso 
+                <span class="spacer"></span>
+                <mat-icon class="icon-spacer">info</mat-icon></h4>
+              <form class="row g-3" [formGroup]="secondFormGroup">
+             <input type="hidden"  formControlName="id_curso">
+                <div class="col-md-6 form-group">
+                  <p>
+                    <mat-form-field appearance="outline">
+                      <mat-label>Curso</mat-label>
+                      <input matInput formControlName="nombre_curso" (keyup)="searchT(this.secondFormGroup.get('nombre_curso')?.value)" placeholder="Ingrese nombre del curso" required  title="Ingresa el nombre del curso">
+                      <mat-error>{{getCourse()}}</mat-error>
+                    </mat-form-field>
+                  </p>
+                </div>
+                <div class="col-md-6 form-group">
+                  <p>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Calificación</mat-label>
+                        <mat-select matInput formControlName="calificacion"  title="Selecciona una opción" required>
+                          <mat-option value="Urgente">Urgente</mat-option>
+                          <mat-option value="Importante">Importante</mat-option>
+                          <mat-option value="Complementario">Complementario</mat-option>
+
+                        </mat-select>
+                      </mat-form-field>
+                  </p>
+                </div>
+                <div class="col-md-3  form-group">
+                  <p>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Areas Obligatorias</mat-label>
+                        <mat-select matInput multiple formControlName="areas_BP" title="Selecciona una opción" required>
+                <mat-option *ngFor="let item of routeD" value="{{item.nombre_ruta}}">{{item.nombre_ruta}}</mat-option>
+                <mat-option value="Todas las areas">Todas las areas</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                  </p>  
+                </div>
+                <div class="col-md-3  form-group">
+                  <p>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Cargos Obligatorios</mat-label>
+                        <mat-select  matInput multiple formControlName="cargo_BP" title="Selecciona una opción" required>
+                    <mat-option *ngFor="let item of cargos" value="{{item}}">{{item}}</mat-option>
+                    <mat-option value="Todos">Todos</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                  </p>  
+                </div>
+                <div class="col-md-3  form-group">
+                  <p>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Areas Opcionales</mat-label>
+                        <mat-select matInput multiple formControlName="areas_OP" title="Selecciona una opción" required>
+                          <mat-option *ngFor="let item of routeD" value="{{item.nombre_ruta}}">{{item.nombre_ruta}}</mat-option>
+                          <mat-option value="Ninguna">Ninguna</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                  </p>  
+                </div>
+                <div class="col-md-3 form-group">
+                  <p>
+                    <mat-form-field appearance="outline" multiple >
+                        <mat-label>Cargos Opcionales</mat-label>
+                        <mat-select matInput multiple  formControlName="cargo_OP" title="Selecciona una opción" required>
+                          <mat-option *ngFor="let item of cargos" value="{{item}}">{{item}}</mat-option>
+                          <mat-option value="Ninguno">Ninguno</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                  </p>  
+                </div>
+
+                <div class="col-md-3  form-group">
+                  <p>
+                    <mat-form-field appearance="outline">
+                      <mat-label>Tiempo Evaluación (Minutos)</mat-label>
+                      <input type="number" matInput placeholder="Tiempo evaluación" formControlName="T_M_Evaluacion" 
+                      title="Tiempo de evaluación en minutos" required >
+                    </mat-form-field>
+                  </p>
+                </div>
+                <div class="col-md-3  form-group">
+                  <p>
+                    <mat-form-field appearance="outline">
+                      <mat-label>Número de Preguntas</mat-label>
+                      <input type="number" matInput placeholder="Numero de preguntas" formControlName="C_P_evalucion"
+                      title="Número de preguntas" required>
+                    </mat-form-field>
+                  </p>
+                </div>
+                <div class="col-md-3  form-group">
+                  <p>
+                    <mat-form-field appearance="outline">
+                      <mat-label>Ciudad</mat-label>
+                      <mat-select matInput multiple  formControlName="Ciudad" title="Selecciona una opción" required>
+                        <mat-option *ngFor="let item of city" value="{{item}}">{{item}}</mat-option>
+                        <mat-option value="Todas">Todas</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </p>
+                </div>
+                <div class="col-md-3  form-group">
+                  <p>
+                    <mat-form-field appearance="outline">
+                      <mat-label>Horas Certificadas</mat-label>
+                      <input type="number" matInput placeholder="Numero de horas certificadas" formControlName="HCertificado"
+                      title="Número de horas certificadas" required>
+                    </mat-form-field>
+                  </p>
+                </div>
+                <div class="col-md-6  form-group">
+                  <p>
+                    <mat-form-field appearance="outline">
+                      <mat-label>Descripción contenido</mat-label>
+                      <textarea matInput formControlName="descripcion_contenido" title="Descripción del contenido" required></textarea>
+                    </mat-form-field>
+                  </p>
+                </div>
+                <div class="col-md-6  form-group">
+                  <p>
+                    <mat-form-field appearance="outline">
+                      <mat-label>Observaciones</mat-label>
+                      <textarea matInput formControlName="observaciones" title="Observaciones del curso" required></textarea>
+                    </mat-form-field>
+                  </p>
+                </div>
+             
+                <div class="col-md-12  form-group">
+                  <button color="primary" matStepperNext mat-raised-button >Siguiente</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+  </mat-step>
+  <mat-step [stepControl]="thirdFormGroup" label="Por último" [editable]="isEditable">
+    <div class="d-flex align-items-center auth px-0">
+      <div class="row w-100 mx-0">
+        <div class="col-lg-8 mx-auto">
+          <div class="auth-form-light text-left py-0 px-4 px-sm-5">
+            <h4 (click)="openBottomSheet(3)" style="cursor:pointer;">Información acerca del creador del curso 
+              <span class="spacer"></span>
+                <mat-icon class="icon-spacer">info</mat-icon>
+            </h4>
+            <form class="row g-3" [formGroup]="thirdFormGroup">
+              <div class="col-md-6  form-group">
+                <p>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Nombres</mat-label>
+                    <input type="text" formControlName="name" matInput placeholder="Nombres" title="Nombre del creador de este curso">
+                  </mat-form-field>
+                </p>
+              </div>
+              <div class="col-md-6  form-group">
+                <p>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Apellidos</mat-label>
+                    <input type="text" formControlName="last_name" matInput placeholder="Apellidos" title="Apellidos del creador de este curso">
+                  </mat-form-field>
+                </p>
+              </div>
+              <div class="col-md-12  form-group">
+                <p>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Correo</mat-label>
+                    <input type="email" formControlName="email" matInput placeholder="Correo" title="Correo electrónico">
+                  </mat-form-field>
+                </p>
+              </div>   
+              <div class="col-md-12 form-group">
+                <mat-form-field appearance="outline">
+                  <mat-label>Subir archivo</mat-label>
+                  <mat-select [(value)]="select" >
+                    <mat-option [value]="item" (click)="change(select)" *ngFor="let item of selectA" >{{item}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+             
+              <ng-template [ngIf]="urlArchivo">
+                <div class="col-md-12  form-group">
+                  <mat-form-field style="margin-top: -29px;" appearance="outline">
+                    <mat-label>URL</mat-label>
+                    <input type="text" formControlName="urlArchivo" matInput placeholder="Ingresa url de oneDrive" title="Url de oneDrive">
+                    <mat-error>{{getURL()}}</mat-error>
+                  </mat-form-field>
+              </div>
+              </ng-template>
+
+              <ng-template [ngIf]="archivo">
+              <div class="col-md-12  form-group">
+                <input style="margin-top: -29px;"   id='file' class="form-control" (change)="validateArchivo($event);"   type="file" name="file" multiple>
+                <input #archivos   type="hidden" formControlName="archivos">
+              </div> 
+               </ng-template>
+
+              
+
+              <div class="col-md-12  form-group">
+                <button color="primary" [disabled]="thirdFormGroup.invalid" matStepperNext mat-raised-button (click)="send(thirdFormGroup.value, secondFormGroup.value)" >Enviar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </mat-step>
+</mat-stepper>

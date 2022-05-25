@@ -1,0 +1,25 @@
+body { margin: 0; 
+    font-family: 'Lato', sans-serif;}
+
+.bread{
+display: flex;
+padding-top: 1rem;
+font-size: 15px;
+}
+
+
+@media only screen and (max-width: 767px) {
+    .bread {
+    align-items: center;
+    padding-top: 0.5rem;
+    font-size: 11px;
+    }
+  }
+
+  
+@media only screen and (max-width: 300px) {
+    .bread {
+    display: none;
+    }
+  }
+  

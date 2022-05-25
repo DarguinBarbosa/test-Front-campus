@@ -1,0 +1,145 @@
+.example-spacer {
+    flex: 1 1 auto;
+}
+.color{
+  background-color:#001871;
+  font-family: 'Lato', sans-serif;
+  /* position: initial; */
+  margin-top:-1;
+  color: #fff;
+  height:auto;
+}
+.color2{
+  background-color:#001871;
+  font-family: 'Lato', sans-serif;
+  color: #fff;
+}
+.p{
+  color: #fff;
+}
+.logo{
+  margin-top:7px;
+  width: 300px;
+}
+
+.ejep{
+  height: 6rem;
+  width: auto;
+  box-shadow: 0px 0px 5px 4px #000 ;
+}
+.ejep2{
+  height: auto;
+  width: auto;
+  background-color:#001871;
+  font-family: 'Lato', sans-serif;
+}
+.a{
+  cursor: pointer;
+}
+
+
+@media only screen and (max-width: 767px) {
+  .logo {
+  margin-top: 7px;
+  width: 200px;
+  }
+}
+
+
+ .example-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.example-is-mobile .example-toolbar {
+  position: fixed;
+  /* Make sure the toolbar will stay on top of the content as it scrolls past. */
+  z-index: 2;
+}
+
+h1.example-app-name {
+  margin-left: 8px;
+}
+
+.example-sidenav-container {
+  /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
+     causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
+  flex: 1;
+}
+.hide{
+  display: none;
+}
+
+.example-is-mobile .example-sidenav-container {
+  flex: 1 0 auto;
+}
+::ng-deep.mat-drawer-inner-container{
+  width:104% !important;
+}
+
+mat-sidenav{
+  overflow-x: hidden;
+}
+.example-tree-invisible {
+  display: none;
+}
+
+.example-tree ul,
+.example-tree li {
+  margin-top: 0;
+  margin-bottom: 0;
+  list-style-type: none;
+}
+::ng-deep mat-sidenav{
+  box-shadow: 0px 0px 83px -38px;
+  
+}
+
+::ng-deep .ng-star-inserted .collapse .show{
+  margin-top: -1rem !important;
+  margin-bottom: -1rem !important;
+}
+.panel{
+  margin-top: -1rem !important;
+  margin-bottom: -1rem !important;
+}
+
+.title{
+  padding: 1rem;
+    color: gray;
+}
+
+.a{
+  text-decoration: none;
+  font-size: 12px;
+  padding: 0.5rem 1.5rem;
+  display: flex;
+}
+
+/*
+ * This padding sets alignment of the nested nodes.
+ */
+.example-tree .mat-nested-tree-node div[role=group] {
+  padding-left: 11px;
+}
+
+/*
+ * Padding for leaf nodes.
+ * Leaf nodes need to have padding so as to align with other non-leaf nodes
+ * under the same parent.
+ */
+.example-tree div[role=group] > .mat-tree-node {
+  padding-left: 15px;
+}
+
+.button-agregar-curso{
+  float:right;
+  top: -9px;
+  color: #001871;
+}
+

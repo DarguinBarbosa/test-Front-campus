@@ -1,0 +1,72 @@
+<app-spiner></app-spiner>
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches" >
+  <mat-toolbar  class="color example-toolbar">
+    <mat-toolbar-row class="ejep">
+      <img class="logo" src="../assets/img/rbi-logo-white-30mm sin fondo.png" alt="Russell ">
+      <span class="example-spacer"></span>
+      <button mat-icon-button class="example-icon"
+        [matTooltipPosition]="'left'"
+        matTooltip="MENU" (click)="snav.toggle()" >
+        <mat-icon>menu</mat-icon>
+      </button>
+    </mat-toolbar-row>
+    <mat-toolbar-row >
+      <h6><app-breadcrumbs></app-breadcrumbs></h6>
+      
+      <span class="example-spacer"></span>
+      <button (click)="logOut()" matTooltip="CERRAR SESIÓN"  mat-icon-button >
+        <mat-icon>logout</mat-icon>
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <mat-sidenav-container opened class="example-sidenav-container"
+                         [style.marginTop.px]="mobileQuery.matches ? 130 : 0">
+    <mat-sidenav #snav opened [mode]="mobileQuery.matches ? 'over' : 'side'"
+    [style.width.px]="302"  [fixedInViewport]="mobileQuery.matches" fixedTopGap="150">
+    <div class="title" mat-subheader>Rutas
+      <span class="example-spacer"></span>
+      <button class="button-agregar-curso"  matTooltip="Agregar Curso" (click)="close(acc,'F')"  mat-icon-button >
+        <mat-icon>add_circle_outline</mat-icon>
+      </button>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="card ng-star-inserted" style="width: 100%;">
+      <div class="card-header" >
+    <a (click)="close(acc,'H')" routerLinkActive="router-link-active"  class="btn btn-link ng-star-inserted collapsed">Home</a>
+  </div>
+  </div>
+  
+    <ngb-accordion  #acc="ngbAccordion"  (panelChange)="TreeData($event)"  >
+      <ngb-panel  *ngFor="let item of routeD;"  id="a{{item.id_ruta}}"  title="{{item.nombre_ruta}}" >
+        <ng-template ngbPanelContent class="div" >
+          <ngb-accordion #acc="ngbAccordion" (panelChange)="Tmodule($event)">
+            <ngb-panel *ngFor="let d of DataTopic;" id="b{{d.id_tema}}"  title="{{d.nombre_tema}}" >
+              <ng-template ngbPanelContent>
+                
+                <ngb-accordion #acc="ngbAccordion" (panelChange)="Mcourse($event)">
+                  <ngb-panel *ngFor="let in of DataModule;" id="c{{in.id_modulo}}"  title="{{in.descripcion_m}}" >
+                    <ng-template ngbPanelContent>
+                      <div *ngFor="let cu of DataCourse;">
+                          <a class="a"  (click)="sendDataComp(cu,'modal')"   data-bs-toggle="collapse"[attr.data-bs-target]="'#collapse'+cu.id_curso">
+                            {{cu.nombre_curso}}
+                          </a>
+                      </div>
+                      
+                    </ng-template>
+                  </ngb-panel>
+                </ngb-accordion>
+
+              </ng-template>
+            </ngb-panel>
+          </ngb-accordion>
+
+        </ng-template>
+      </ngb-panel>
+    </ngb-accordion>
+    </mat-sidenav> 
+    <mat-sidenav-content [style.padding.px]="18" >
+    <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
